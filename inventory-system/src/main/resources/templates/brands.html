@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http:/ /www.w3.org/1999/xhtml" xmlns:th="http:/ /www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Supermarket Store Inventory</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">App</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+				</li>
+
+		</div>
+	</nav>
+
+	<div class="container text-center">
+		<div>
+			<h1>List of brands</h1>
+		</div>
+		<br>
+		<div>
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th >ID</th>
+						<th >Name</th>
+						<th >Category</th>
+						<th >Action</th>
+			
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="brand : ${brandsList}">		
+						<td th:text="${brand.id}"></td>	
+						<td th:text="${brand.name}"></td>
+						<td th:text="${brand.categories}"></td>
+						<td>
+						<a th:href="@{'/brands/edit'+'/'+${brand.id}}" class="btn btn-info">Edit</a>
+						<a th:href="@{'/brands/delete'+'/'+${brand.id}}" class="btn btn-danger">Delete</a>
+						</td>	
+					
+		
+
+											
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
